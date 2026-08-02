@@ -10,7 +10,7 @@ le Go est un langage de programmation crée par google, c’est un langage compi
 `
 
 
-## Les bases
+## Bases
 [[types]]
 [[slices]]
 [[maps]]
