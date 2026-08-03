@@ -1,4 +1,4 @@
-tout d'abord une fonction est déclere come ci dessous :
+tout d'abord une fonction est déclarer comme ci dessous :
 `func myFunc() {
 `// random stuff
 `}
@@ -18,3 +18,5 @@ on pourra définir aussi plusieur retour de ma fonction
 `// random stuff
 `return myReturn1, myReturn2
 `}
+
+(mettre définition des fonctions for, switch, if else)
