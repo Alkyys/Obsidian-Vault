@@ -7,12 +7,17 @@ le Go est un langage de programmation crée par google, c’est un langage compi
 `package main`
 `import "fmt" // commentaire
 `func main() {
-`fmt.Printf("Hello word")
+	`fmt.Printf("Hello word")
 `}
 
 ## Bases
 [[types]]
+[[arrays]]
 [[slices]]
 [[maps]]
-[[structs]]
+[[functions and structs]]
 [[pointeurs]]
+[[comparators]]
+
+### Gestion d'erreurs
+[[Errors]]
