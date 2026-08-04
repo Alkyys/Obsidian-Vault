@@ -29,14 +29,17 @@ la valeur par défault (c'est a dire qu'on ne l'assigne pas ) est a 0
 Pour stocker les chiffres a virgule on utilise les float, il existe deux type float32 et float64
 
 la valeur par défault (c'est a dire qu'on ne l'assigne pas ) est a 0
-### string
-les string sont utiliser pour stoker des chaines de caratères, petite particularité, si on venais a utiliser la fonction len() sur une straing on aura en retour la place qu'elle prend dans la mémoire. si on est dans un cas ou on a besoin de savoir le nombre de caratère dans notre string, on va utiliser la packaging unicode/utf8 et on va utiliser la fonction RuneCountInString() 
-
-la valeur par défault (c'est a dire qu'on ne l'assigne pas ) est a "" (chaine de caratère vide)
 #### bool
 c'est une variable qui peut que etre true ou false 
 
 la valeur par défault (c'est a dire qu'on ne l'assigne pas ) est a false
+### string
+les string sont utiliser pour stoker des chaines de caratères, petite particularité, si on venais a utiliser la fonction len() sur une straing on aura en retour la place qu'elle prend dans la mémoire. si on est dans un cas ou on a besoin de savoir le nombre de caratère dans notre string, on va utiliser la packaging unicode/utf8 et on va utiliser la fonction RuneCountInString() 
+
+la valeur par défault (c'est a dire qu'on ne l'assigne pas ) est a "" (chaine de caratère vide)
+
+alors pour la suite nous uliseraon une chaine de caractère suivante `var myString = "résumé"` 
+
 ### rune
 (en vrai c'est galere jsp ce que c'est, mais askip on a pas besoin)
 
