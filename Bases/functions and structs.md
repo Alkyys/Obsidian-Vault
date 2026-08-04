@@ -19,4 +19,11 @@ on pourra définir aussi plusieur retour de ma fonction
 `return myReturn1, myReturn2
 `}
 
-(mettre définition des fonctions for, switch, if else)
+il existe la bloucle for suivant cette syntax :
+```
+for i:=0; i<10; i++ {
+	fmt.Println(i)
+}
+```
+
+(mettre définition des fonctions, switch, if else)
