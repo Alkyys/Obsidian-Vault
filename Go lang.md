@@ -19,7 +19,7 @@ le Go est un langage de programmation crée par google, c’est un langage compi
 [[pointeurs]]
 [[comparators]]
 
-### Gestion d'erreurs
+## Gestion d'erreurs
 [[Errors]]
 
 ## Concurrence — introduction
