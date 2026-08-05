@@ -117,4 +117,6 @@ func dbCall(i int) {
 }
 ```
 
-ici losrqu'une go routine arrive a  Lock() elle va vérifier si une autre go routine a déja vérouiller si c'est le cas elle va attendre pour éviter de modifier le meme espace memoire au meme moment. et une fois terminer elle va faire appel a la méthode Unlock() pour l'aisser la place libre a d'autre go routine.
+ici losrqu'une go routine arrive a  Lock() elle va vérifier si une autre go routine a déja vérouiller si c'est le cas elle va attendre pour éviter de modifier le meme espace memoire au meme moment. et une fois terminer elle va faire appel a la méthode Unlock() pour laisser la place libre a d'autre go routine.
+
+il existe aussi les methode `RLock()` et `RUnlock()` le R signifie Read, cela permet de pouvoir gerer les les fonction qui veulent lire les donnée et celles qui veulent modifier des donnée. le systeme est fait pour que plusiuer fonction puissent lire en meme temps et ne pas interférer avec celle qui modifie les data (attention a vérifier)
