@@ -38,10 +38,46 @@ les string sont utiliser pour stoker des chaines de caratères, petite particula
 
 la valeur par défault (c'est a dire qu'on ne l'assigne pas ) est a "" (chaine de caratère vide)
 
-alors pour la suite nous uliseraon une chaine de caractère suivante `var myString = "résumé"` 
+alors pour la suite nous uliseron une chaine de caractère suivante `var myString = "résumé"` pour savoir le nombre de caratère si nous utilisons cette technique suivant nous obtenons une résultat surprenant. 
+```
+func main(){
+	var myString = "résumé"
+	var indexed = myString[0]
+	fmt.Printf("%v, %T\n", indexed, indexed)
+	
+	for i, v := range myString{
+		fmt. Println(i, V)
+	}
+}
+```
+ici on obtient :
+0 114
+1 233
+3 115
+4 117
+5 109
+6 233
+
+ici on remarque que le 2 nexiste pas, ici le é prend plus de 7 car byts (ici on compte de nombre de byte et non le nombre de caratère d'une string)
+
+Ici si nous voulont compter le nombre de caratère, il faut utiliser un package particulier 
+`` (a completer)
+
+pour la gestion de string Go a prévu un package "string" qui nous ervira a optimiser les performance car le type string est in modifiable, pour e faire on est oblider concat des strings pour en recrée une. comme ci dessous :
+```
+var strSlice = []string{"s", "u", "b", "s", "с", "р", "i", "b", "e"}
+var strBuilder strings.Builder
+for i := range strSlicet
+	strBuilder WriteString(strSlice[il)
+｝
+
+var catStr = strBuilder.StringO
+fmt. Printf("\n%v", catStr)
+```
+
 
 ### rune
-(en vrai c'est galere jsp ce que c'est, mais askip on a pas besoin)
+les rune sont des nombre a virgule unicode, en vrai ce n'et qu'un alias pour un uint32
 
 la valeur par défault (c'est a dire qu'on ne l'assigne pas ) est a 0
 
