@@ -17,18 +17,42 @@ func main(){
     
 > **Attention :** Tenter d'accéder à un index en dehors des limites (ex: `intArr[5]`) génère une erreur de compilation ou un `panic: runtime error: index out of range` à l'exécution.
 
+### Le Slicing (Découpage de tableau)
+
+La syntaxe `intArr[début:fin]` permet d'extraire une sous-partie d'un tableau (l'index de `fin` est exclus) :
+
+```
+intArr := [3]int32{0, 123, 0}
+fmt.Println(intArr[1:3]) // Renvoie [123 0] (prend l'index 1 et l'index 2)
+```
+
+### Empreinte en mémoire
+
+Les éléments d'un tableau sont stockés de façon contiguë (les uns à la suite des autres) en mémoire :
+
+- 1 élément `int32` = 4 octets (bytes)
+    
+- Un tableau `[3]int32` occupe exactement **12 octets** (`3 * 4 octets`).
 
 
+### Syntaxes de déclaration et d'initialisation
 
+Il existe plusieurs façons de déclarer et d'initialiser un Array :
 
-Ci dessus on  a crée un tabeau de int32 avec 3 elements
+```
+// Forme explicite complète
+var intArr [3]int32 = [3]int32{1, 2, 3}
 
-pour acceder au element du tableau on va utiliser cette syntaxe, attention les index commence a 0 et non pas a 1, par exemple si on veux avoir le second element on va l'apeller `intArr[1]
-lorsqu'on demande un element avec l'index hors du tableau on obtient 0, en suivant l'exemple au dessus on aurais `intArr[1:3]` on aurais comme résultat `[123 0]`
+// Forme courte avec initialisation
+intArr := [3]int32{1, 2, 3}
 
-sachant que un int32 prend 4 bytes de mémoire, notre tableau prend 12 bytes
+// Inférence de la taille avec [...] (Go compte le nombre d'éléments pour nous)
+intArr := [...]int32{1, 2, 3} // Crée un tableau de type [3]int32
 
-on peut aussi déclarer et assigné un tableau comme ceci `var intArr [3]int32 = [3]int32{1,2,3}` ou encore `intArr := [3]int32{1,2,3}` ou encore ``intArr := [...]int32{1,2,3}``
+// Initialisation d'index spécifiques
+intArr := [5]int32{0: 10, 4: 50} // Crée [10, 0, 0, 0, 50]
+```
+
 
 
 
