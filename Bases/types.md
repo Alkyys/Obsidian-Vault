@@ -6,19 +6,24 @@ exemple de type de declaration de variable
 `y:= 17 // ici on déclare et on assigne la varible`
 
 on peut aussi déclarer un type assigner une variable comme ceci aussi :
-`var myVar := "text" // ici on déclare une string et on lui assigne une valeur `
+`var myVar = "text" // Forme explicite (le type string est inféré)
+`myVar := "text"    // Forme courte (réservée à l'intérieur des fonctions) `
 on peut aussi faire cela de manière multiple comme ceci :
 `var var1, var2 int = 1,2`
 ou 
 `var1, var2 := 1,2`
 
-const myConst // pour une constante qui ne peux etre changer, elle ne peut recevoir qu'une seule fois une assignation
-var myVar // comme dit dans son type elle peut varier mais pas changer de type
+`const myConst = 10 // Valeur fixée à la compilation, obligatoire dès la déclaration
+`var myVar // comme dit dans son type elle peut varier mais pas changer de type
 
-attention on peux pas forcément malanger les différent type, par exemple je ne peux pas faire des opérations avec un int et un float, (biensur il existe une solution c'est de transformer le int en float )
+attention on peux pas forcément mélanger les différent type, par exemple je ne peux pas faire des opérations avec un int et un float, (biensur il existe une solution c'est de transformer le int en float )
+
+
 ### INT
 pour la déclaration de int par défaut il sera de 32 ou 64 bits en fonction du systme,
-pour un int16 on peut aller jusqu'a 32767, si on lui rajoute un on aura un overflow a l'éxécution mais pas a la complilation.
+pour un int16 on peut aller jusqu'a 32767, si on lui rajoute un on aura un overflow a l'éxécution mais pas a la complilation (cela se traduit pas par une erreur).
+`var x int16 = 32767
+`x = x + 1 // Pas d'erreur à l'exécution ! x vaut maintenant -32768
 
 int8 peut aller de -128 a 127 et 
 Les uint cest la meme que des int sauf que c'est que les nombre positof qui peuvent etre stocker
@@ -65,19 +70,38 @@ Ici si nous voulont compter le nombre de caratère, il faut utiliser un package 
 
 pour la gestion de string Go a prévu un package "string" qui nous ervira a optimiser les performance car le type string est in modifiable, pour e faire on est oblider concat des strings pour en recrée une. comme ci dessous :
 ```
-var strSlice = []string{"s", "u", "b", "s", "с", "р", "i", "b", "e"}
-var strBuilder strings.Builder
-for i := range strSlicet
-	strBuilder WriteString(strSlice[il)
-｝
+package main
 
-var catStr = strBuilder.StringO
-fmt. Printf("\n%v", catStr)
+import (
+	"fmt"
+	"strings"
+	"unicode/utf8"
+)
+
+func main() {
+	myString := "résumé"
+
+	// Nombre d'octets vs Nombre de caractères
+	fmt.Println(len(myString))                    // Output: 8 (octets)
+	fmt.Println(utf8.RuneCountInString(myString)) // Output: 6 (caractères)
+
+	// Optimisation de concaténation (les strings étant immuables)
+	var strSlice = []string{"s", "u", "b", "s", "c", "r", "i", "b", "e"}
+	var strBuilder strings.Builder
+
+	for _, char := range strSlice {
+		strBuilder.WriteString(char)
+	}
+
+	catStr := strBuilder.String()
+	fmt.Println(catStr) // Output: subscribe
+}
 ```
 
 
 ### rune
-les rune sont des nombre a virgule unicode, en vrai ce n'et qu'un alias pour un uint32
+Une `rune` n'est **pas du tout un nombre à virgule** (float). C'est un **point de code Unicode (un entier)**. De plus, c'est un alias pour **`int32`** (entier signé 32 bits),
+- La `rune` est un entier (`int32`) représentant un caractère Unicode (ex: `'a'`, `'é'`, `'😀'`).
 
 la valeur par défault (c'est a dire qu'on ne l'assigne pas ) est a 0
 
