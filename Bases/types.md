@@ -1,14 +1,16 @@
-comme dit précédemment les types sont définit et ne peuvent pas etre changer, les variable doivent etre obligatoirement utiliser sinon on se retrouve avec une erreur  
+En Go, le typage est **statique et fort** : une fois le type d'une variable défini, il ne peut plus changer. Les variables locales (déclarées dans une fonction) **doivent obligatoirement être utilisées**, sinon Go lève une erreur à la compilation. 
 
-exemple de type de declaration de variable
-`var x int`
-`x = 16 // ici on déclare seulement la variable `
-`y:= 17 // ici on déclare et on assigne la varible`
+### Exemples de déclaration
+```
+var x int
+x = 16 // Déclaration préalable (x vaut 0 par défaut), puis assignation
 
-on peut aussi déclarer un type assigner une variable comme ceci aussi :
-`var myVar = "text" // Forme explicite (le type string est inféré)
-`myVar := "text"    // Forme courte (réservée à l'intérieur des fonctions) `
-on peut aussi faire cela de manière multiple comme ceci :
+y := 17 // Forme courte : déclaration + inférence de type + assignation (dans une fonction uniquement)
+
+var myVar = "text" // Forme explicite avec initialisation (le type string est inféré)
+```
+
+Déclarations multiples :
 `var var1, var2 int = 1,2`
 ou 
 `var1, var2 := 1,2`
@@ -17,8 +19,11 @@ ou
 `var myVar // comme dit dans son type elle peut varier mais pas changer de type
 
 attention on peux pas forcément mélanger les différent type, par exemple je ne peux pas faire des opérations avec un int et un float, (biensur il existe une solution c'est de transformer le int en float )
-
-
+```
+var i int = 5
+var f float64 = 2.5
+var result = float64(i) + f // Convertir int en float64
+```
 ### INT
 pour la déclaration de int par défaut il sera de 32 ou 64 bits en fonction du systme,
 pour un int16 on peut aller jusqu'a 32767, si on lui rajoute un on aura un overflow a l'éxécution mais pas a la complilation (cela se traduit pas par une erreur).
@@ -68,36 +73,34 @@ ici on remarque que le 2 nexiste pas, ici le é prend plus de 7 car byts (ici on
 Ici si nous voulont compter le nombre de caratère, il faut utiliser un package particulier 
 `` (a completer)
 
-pour la gestion de string Go a prévu un package "string" qui nous ervira a optimiser les performance car le type string est in modifiable, pour e faire on est oblider concat des strings pour en recrée une. comme ci dessous :
+Comme les chaînes sont immuables, réassigner une `string` dans une boucle crée de nombreux objets en mémoire. Pour des concaténations répétées, on utilise `strings.Builder` :
 ```
 package main
 
 import (
-	"fmt"
-	"strings"
-	"unicode/utf8"
+    "fmt"
+    "strings"
+    "unicode/utf8"
 )
 
 func main() {
-	myString := "résumé"
+    myString := "résumé"
 
-	// Nombre d'octets vs Nombre de caractères
-	fmt.Println(len(myString))                    // Output: 8 (octets)
-	fmt.Println(utf8.RuneCountInString(myString)) // Output: 6 (caractères)
+    fmt.Println(len(myString))                    // Output: 8 (octets)
+    fmt.Println(utf8.RuneCountInString(myString)) // Output: 6 (caractères)
 
-	// Optimisation de concaténation (les strings étant immuables)
-	var strSlice = []string{"s", "u", "b", "s", "c", "r", "i", "b", "e"}
-	var strBuilder strings.Builder
+    // Concaténation optimisée
+    var strSlice = []string{"s", "u", "b", "s", "c", "r", "i", "b", "e"}
+    var strBuilder strings.Builder
 
-	for _, char := range strSlice {
-		strBuilder.WriteString(char)
-	}
+    for _, char := range strSlice {
+        strBuilder.WriteString(char)
+    }
 
-	catStr := strBuilder.String()
-	fmt.Println(catStr) // Output: subscribe
+    catStr := strBuilder.String()
+    fmt.Println(catStr) // Output: subscribe
 }
 ```
-
 
 ### rune
 Une `rune` n'est **pas du tout un nombre à virgule** (float). C'est un **point de code Unicode (un entier)**. De plus, c'est un alias pour **`int32`** (entier signé 32 bits),
