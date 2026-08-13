@@ -26,6 +26,3 @@ le Go est un langage de programmation crée par google, c’est un langage compi
 ## Concurrence — introduction
 [[goroutines]]
 [[channels]]
-[[select]]
-[[sync.WaitGroup]]
-[[sync.Mutex]]
