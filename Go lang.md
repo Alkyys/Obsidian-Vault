@@ -26,3 +26,10 @@ le Go est un langage de programmation crée par google, c’est un langage compi
 ## Concurrence — introduction
 [[goroutines]]
 [[channels]]
+
+## Tooling
+[[go mod - La Gestion des Dépendances]]
+[[gofmt - Le Formatage du Code]]
+[[go vet - L'Analyse Statique]]
+[[go test - Les Tests en Go]]
+[[Structure d'un Projet Go Idiomatique]]
